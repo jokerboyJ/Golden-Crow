@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+
+        //push 实例
+        function pushNum(arr, ...num) {
+            for(let i = 0, lenNum = num.length, lenArr = arr.length; i < lenNum; i ++) {
+                arr[lenArr + i] = num[i];
+            }
+        }
+        
+        //静态
+        Array.prototype.pushNum = function(...num) {
+            for(let i = 0, lenNum = num.length, lenArr = this.length; i < lenNum; i ++) {
+                this[lenArr + i] = num[i];
+            }
+        }
+        
+        //pop
+        function popNum(arr) {
+            let len = arr.length;
+            let num = arr[len - 1];
+            arr.length = len - 1;
+            return num;
+        }
+        
+        Array.prototype.popNum = function () {
+            let len = this.length;
+            let num = this[len - 1];
+            this.length = len - 1;
+            return num;
+        }
+
+        //shift
+        function shift(arr) {
+            for(let len = arr.length, i = len; i ; i --) {
+                arr[i-1] = arr[i]
+            }
+        }
+
+        isEven = (x) => {
+            // let y = 0;
+            console.log(x);
+            return x % 2 == 0;
+        };
+        
+        let arrEven = [2, 4, 6];
+        // let arr1 = arrEven.every(isEven); 直到返回false 返回值为 boolean 类型
+
+        // let arr2 = arr.some(isEven); 直到返回true，返回值为 boolean 类型
+
+        // let arr3 = arr.forEach(isEven);  forEach没有返回值
+        
+        // let arr4 = arr.map(isEven); 遍历所有value，有返回值 
+
+        // let arr5 = arr.filter(isEven); 遍历所有value, 返回 返回值为true 的参数
+
+        // let arr6 = arr.reduce(isEven);
+
+        // 模仿 filter
+        
+        function ownFilter(arr, callback) {
+           let mid = [];
+           arr.forEach((x) => {
+               if(callback(x) == true) {
+                   mid.push(x);
+               }
+           })
+           return mid;
+        }
+         
+        // 模仿 map 返回 回调函数 的返回值
+        function ownMap(arr, callback) {
+            let mid = [];
+            arr.forEach((x) => {
+                mid.push(callback(x));
+            });
+            return mid;
+        }
+
+        // let arra = ownMap(arr, isEven);
+
+        // function Fun({name, age}) {
+        //     console.log(name);
+        //     console.log(age);
+        // }
+
+        // Fun({age: 18, name: "Tom"});
+
+
+        function Fun(info = {}) {
+            let {name = "Tom", age = 18, stature = 155} = info;
+            console.log(name, age, stature);
+        }
+        
+        let obj = {};
+        name = "name";
+        obj.name = "Tom";
+        console.log(obj.name);
+        console.log(obj[name]);
+
+
+    </script>
+
+</body>
+</html>
